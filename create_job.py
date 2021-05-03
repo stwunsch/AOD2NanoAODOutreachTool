@@ -6,12 +6,15 @@ import sys
 
 
 jdl = """\
-universe = vanilla
+universe = docker
+docker_image = docker.io/cmsopendata/cmssw_5_3_32
 executable = ./{PROCESS}.sh
 output = out/$(ProcId).$(ClusterID).out
 error = err/$(ProcId).$(ClusterID).err
 log = log/$(ProcId).$(ClusterID).log
-requirements = (OpSysAndVer =?= "SLCern6")
+should_transfer_files = YES
+transfer_input_files = ./{PROCESS}.sh
+when_to_transfer_output = ON_EXIT
 max_retries = 3
 RequestCpus = 1
 +MaxRuntime = 1800
