@@ -51,7 +51,7 @@ eval `scramv1 runtime -sh`
 # Clone and build the repo
 mkdir workspace
 cd workspace
-git clone git://github.com/stwunsch/AOD2NanoAODOutreachTool -b dockerjobs AOD2NanoAOD
+git clone git://github.com/stwunsch/AOD2NanoAODOutreachTool -b dockerjobs AOD2NanoAOD --depth 1
 cd AOD2NanoAOD
 scram build
 
