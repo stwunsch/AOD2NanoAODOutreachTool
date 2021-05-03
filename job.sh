@@ -14,7 +14,8 @@ echo "Process:" $PROCESS
 FILE=$3
 echo "File:" $FILE
 
-# NOTE: Start the OUTPUT_DIR path with root:// to copy via XRootD
+# NOTE: Start the OUTPUT_DIR path with root:// to copy via XRootD, e.g at CERN
+# root://eosuser.cern.ch//eos/user/FIRST_LETTER/USERNAME/some_folder
 # NOTE: If the output directory is local, it should be mounted in the docker container.
 OUTPUT_DIR=/path/to/output/dir
 echo "Output directory:" $OUTPUT_DIR
