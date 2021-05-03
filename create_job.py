@@ -7,7 +7,7 @@ import sys
 
 jdl = """\
 universe = docker
-docker_image = docker.io/cmsopendata/cmssw_5_3_32
+docker_image = docker.io/cmssw/slc6
 executable = ./{PROCESS}.sh
 output = out/$(ProcId).$(ClusterID).out
 error = err/$(ProcId).$(ClusterID).err
