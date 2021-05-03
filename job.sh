@@ -44,15 +44,19 @@ echo "### Start working"
 mkdir -p ${OUTPUT_DIR}/${PROCESS}
 
 # Setup CMSSW
-THIS_DIR=$PWD
 cd $CMSSW_BASE
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 eval `scramv1 runtime -sh`
-cd $THIS_DIR
+
+# Clone and build the repo
+mkdir workspace
+cd workspace
+git clone git://github.com/stwunsch/AOD2NanoAODOutreachTool -b dockerjobs AOD2NanoAOD
+cd AOD2NanoAOD
+scram build
 
 # Copy config file
-mkdir -p configs/
-CONFIG_COPY=configs/cfg_${ID}.py
+CONFIG_COPY=cfg_${ID}.py
 cp $CONFIG $CONFIG_COPY
 
 # Modify CMSSW config to run only a single file
@@ -72,6 +76,7 @@ cat $CONFIG_COPY
 cmsRun $CONFIG_COPY
 
 # Copy output file
+# NOTE: If the path is a local path, it just copies the file
 xrdcp -f ${PROCESS}_${ID}.root ${OUTPUT_DIR}/${PROCESS}/${PROCESS}_${ID}.root
 rm ${PROCESS}_${ID}.root
 
