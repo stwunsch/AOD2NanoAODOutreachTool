@@ -48,8 +48,8 @@ eval `scramv1 runtime -sh` # cmsenv
 
 # Clone and build the repo
 echo "Clone and build the repository"
-mkdir workspace
-cd workspace
+mkdir - src/workspace
+cd src/workspace
 git clone git://github.com/stwunsch/AOD2NanoAODOutreachTool -b dockerjobs AOD2NanoAOD --depth 1
 cd AOD2NanoAOD
 scram build
@@ -80,4 +80,3 @@ cp ${PROCESS}_${ID}.root ${OUTPUT_DIR}/${PROCESS}/${PROCESS}_${ID}.root
 rm ${PROCESS}_${ID}.root
 
 echo "### End of job"
-
